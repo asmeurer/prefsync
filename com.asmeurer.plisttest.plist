@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.asmeurer.plisttest</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>plutil</string>
+		<string>-convert</string>
+		<string>xml1</string>
+		<string>/Users/aaronmeurer/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+		<string>-o</string>
+		<string>/Users/aaronmeurer/Documents/dotfiles/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+	</array>
+	<key>WatchPaths</key>
+	<array>
+		<string>/Users/aaronmeurer/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+	</array>
+</dict>
+</plist>
