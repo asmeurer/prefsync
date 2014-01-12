@@ -36,8 +36,8 @@ def main():
     if sys.platform != 'darwin':
         print("Warning: This script has only been tested on Mac OS X")
 
-    binary = args.preffile
-    xml = args.destination
+    binary = os.path.abspath(os.path.expanduser(args.preffile))
+    xml = os.path.abspath(os.path.expanduser(args.destination))
     throttleinterval = args.throttle_interval
 
     with open("binarytoxml.plist") as f:
