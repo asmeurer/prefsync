@@ -13,6 +13,13 @@ import argparse
 import sys
 import os
 
+if sys.version_info < (3,):
+    import pipes
+    quote = pipes.quote
+else:
+    import shlex
+    quote = shlex.quote
+
 __version__ = '1.0'
 
 reverse_DNS = 'com.asmeurer.prefsync'
@@ -36,9 +43,9 @@ def main():
     if sys.platform != 'darwin':
         print("Warning: This script has only been tested on Mac OS X")
 
-    binary = os.path.abspath(os.path.expanduser(args.preffile))
-    xml = os.path.abspath(os.path.expanduser(args.destination))
-    throttleinterval = str(args.throttle_interval)
+    binary = quote(os.path.abspath(os.path.expanduser(args.preffile)))
+    xml = quote(os.path.abspath(os.path.expanduser(args.destination)))
+    throttleinterval = quote(str(args.throttle_interval))
 
     with open("binarytoxml.plist") as f:
         binarytoxml = f.read()
