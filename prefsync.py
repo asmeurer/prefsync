@@ -47,7 +47,10 @@ def main():
     binary = os.path.abspath(os.path.expanduser(args.preffile))
     filename = os.path.basename(binary)
     binary = quote(binary)
-    xml = quote(os.path.join(os.path.abspath(os.path.expanduser(args.destination)), filename))
+    xml = os.path.abspath(os.path.expanduser(args.destination))
+    if os.path.isdir(xml):
+        xml = os.path.join(xml, filename)
+    xml = quote(xml)
     throttleinterval = quote(str(args.throttle_interval))
     prefname = os.path.basename(binary).rpartition('.plist')[0]
     binarytoxml_label = '.'.join([reverse_DNS, prefname, 'binarytoxml', 'plist'])
