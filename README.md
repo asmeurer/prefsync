@@ -31,10 +31,29 @@ system and tools it provides. The main tools are
 [plutil](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/plutil.1.html),
 which allows to convert binary plist files to xml plist files and xml plist
 files back to binary, and [launchd](http://en.wikipedia.org/wiki/Launchd),
-which provides a facility to automatically run a script when a path changes.
+which provides a facility to automatically run a script when a file changes.
+
+There is only one catch, which is that if you just do this, it will run
+cyclically forever, because as soon as the binary file is updated, it will
+write to the xml version, which will register as a change, causing it to write
+the binary plist, and so on.
+
+We get around this by writing a special extended attribute to each file when
+it is written, and ignoring files if they have that attribute (so that only
+changes by other things will register).  This will break if something somehow
+preserves these attributes. In my tests, they don't, but you can easily test
+if your program does by running
+
+    xattr -w test:Test test ~/Library/Preferences/preferencefile.plist
+
+then, make a change to the preferences, and see if the atttribute is still there
+
+    xattr ~/Library/Preferences/preferencefile.plist
 
 # Gotchas
 
 According to
 [this page](http://managingosx.wordpress.com/2006/05/10/launchd-gotcha/) will
-stop watching a path if it ceases to exist.
+stop watching a path if it ceases to exist.  You can reset the process by
+logging out and logging back in, or by restarting.  You can also try using
+`launchctl`, though this may not work reliably.
