@@ -48,6 +48,10 @@ def main():
     xml = quote(os.path.abspath(os.path.expanduser(args.destination)))
     throttleinterval = quote(str(args.throttle_interval))
 
+    # Make sure the xml file exists, since launchd won't work if it doesn't
+    with open(xml, 'a'):
+        pass
+
     with open("binarytoxml.plist") as f:
         binarytoxml = f.read()
 
