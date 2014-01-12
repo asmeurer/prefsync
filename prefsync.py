@@ -44,8 +44,10 @@ def main():
     if sys.platform != 'darwin':
         print("Warning: This script has only been tested on Mac OS X")
 
-    binary = quote(os.path.abspath(os.path.expanduser(args.preffile)))
-    xml = quote(os.path.abspath(os.path.expanduser(args.destination)))
+    binary = os.path.abspath(os.path.expanduser(args.preffile))
+    filename = os.path.basename(binary)
+    binary = quote(binary)
+    xml = quote(os.path.join(os.path.abspath(os.path.expanduser(args.destination)), filename))
     throttleinterval = quote(str(args.throttle_interval))
 
     # Make sure the xml file exists, since launchd won't work if it doesn't
