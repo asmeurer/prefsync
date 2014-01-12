@@ -57,3 +57,12 @@ According to
 stop watching a path if it ceases to exist.  You can reset the process by
 logging out and logging back in, or by restarting.  You can also try using
 `launchctl`, though this may not work reliably.
+
+# Acknowledgments
+
+The Lingon program is invaluable when working with launchd (the older, free
+version works just fine).
+
+# License
+
+BSD (see the LICENSE file).
