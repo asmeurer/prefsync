@@ -71,9 +71,9 @@ def main():
     prefname = os.path.basename(binary).rpartition('.plist')[0]
 
     binarytoxml_agent = os.path.expanduser("~/Library/LaunchAgents/" + '.'.join([reverse_DNS,
-        prefname, 'binarytoxml']))
+        prefname, 'binarytoxml', 'plist']))
     xmltobinary_agent = os.path.expanduser("~/Library/LaunchAgents/" +
-        '.'.join([reverse_DNS, prefname, 'xmltobinary']))
+        '.'.join([reverse_DNS, prefname, 'xmltobinary', 'plist']))
 
         # We only support OS X, so don't bother with os.path.join
     with open(binarytoxml_agent, 'w') as f:
