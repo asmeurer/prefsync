@@ -6,6 +6,8 @@
 	<string>{LABEL}</string>
 	<key>LowPriorityIO</key>
 	<true/>
+    <key>Debug</key>
+    <true/>
 	<key>ProgramArguments</key>
 	<array>
 		<string>convert</string>
