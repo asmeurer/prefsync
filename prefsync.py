@@ -49,6 +49,8 @@ def main():
     binary = quote(binary)
     xml = quote(os.path.join(os.path.abspath(os.path.expanduser(args.destination)), filename))
     throttleinterval = quote(str(args.throttle_interval))
+    prefname = os.path.basename(binary).rpartition('.plist')[0]
+    label = '.'.join([reverse_DNS, prefname, 'binarytoxml', 'plist'])
 
     # Make sure the xml file exists, since launchd won't work if it doesn't
     with open(xml, 'a'):
@@ -60,6 +62,7 @@ def main():
     binarytoxml = binarytoxml.replace("{BINARY}", binary)
     binarytoxml = binarytoxml.replace("{XML}", xml)
     binarytoxml = binarytoxml.replace("{THROTTLEINTERVAL}", throttleinterval)
+    binarytoxml = binarytoxml.replace("{LABEL}", label)
 
     with open("xmltobinary.plist") as f:
         xmltobinary = f.read()
@@ -67,13 +70,10 @@ def main():
     xmltobinary = xmltobinary.replace("{BINARY}", binary)
     xmltobinary = xmltobinary.replace("{XML}", xml)
     xmltobinary = xmltobinary.replace("{THROTTLEINTERVAL}", throttleinterval)
+    xmltobinary = xmltobinary.replace("{LABEL}", label)
 
-    prefname = os.path.basename(binary).rpartition('.plist')[0]
-
-    binarytoxml_agent = os.path.expanduser("~/Library/LaunchAgents/" + '.'.join([reverse_DNS,
-        prefname, 'binarytoxml', 'plist']))
-    xmltobinary_agent = os.path.expanduser("~/Library/LaunchAgents/" +
-        '.'.join([reverse_DNS, prefname, 'xmltobinary', 'plist']))
+    binarytoxml_agent = os.path.expanduser("~/Library/LaunchAgents/" + label)
+    xmltobinary_agent = os.path.expanduser("~/Library/LaunchAgents/" + label)
 
         # We only support OS X, so don't bother with os.path.join
     with open(binarytoxml_agent, 'w') as f:
