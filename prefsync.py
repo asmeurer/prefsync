@@ -12,6 +12,7 @@ from __future__ import print_function
 import argparse
 import sys
 import os
+import subprocess
 
 if sys.version_info < (3,):
     import pipes
@@ -63,15 +64,20 @@ def main():
 
     prefname = os.path.basename(binary).rpartition('.plist')[0]
 
-    # We only support OS X, so don't bother with os.path.join
-    with open(os.path.expanduser("~/Library/LaunchAgents/" + '.'.join([reverse_DNS, prefname,
-        'binarytoxml'])), 'w') as f:
+    binarytoxml_agent = os.path.expanduser("~/Library/LaunchAgents/" + '.'.join([reverse_DNS,
+        prefname, 'binarytoxml']))
+    xmltobinary_agent = os.path.expanduser("~/Library/LaunchAgents/" +
+        '.'.join([reverse_DNS, prefname, 'xmltobinary']))
+
+        # We only support OS X, so don't bother with os.path.join
+    with open(binarytoxml_agent, 'w') as f:
         f.write(binarytoxml)
 
-    with open(os.path.expanduser("~/Library/LaunchAgents/" + '.'.join([reverse_DNS, prefname,
-        'xmltobinary'])), 'w') as f:
+    with open(xmltobinary_agent, 'w') as f:
         f.write(xmltobinary)
 
+    return (subprocess.check_call(['launchctl', 'load', binarytoxml_agent]) or
+    subprocess.check_call(['launchctl', 'load', xmltobinary_agent]))
 
 if __name__ == '__main__':
     sys.exit(main())
