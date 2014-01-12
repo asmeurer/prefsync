@@ -13,17 +13,17 @@
 		<string>plutil</string>
 		<string>-convert</string>
 		<string>binary1</string>
-		<string>/Users/aaronmeurer/Documents/dotfiles/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+		<string>{XML}</string>
 		<string>-o</string>
-		<string>/Users/aaronmeurer/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+		<string>{BINARY}</string>
 	</array>
 	<key>QueueDirectories</key>
 	<array/>
 	<key>ThrottleInterval</key>
-	<integer>100</integer>
+	<integer>{THROTTLEINTERVAL}</integer>
 	<key>WatchPaths</key>
 	<array>
-		<string>/Users/aaronmeurer/Documents/dotfiles/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+		<string>{XML}</string>
 	</array>
 </dict>
 </plist>

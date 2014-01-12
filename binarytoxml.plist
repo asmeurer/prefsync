@@ -2,20 +2,28 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Disabled</key>
+	<true/>
 	<key>Label</key>
-	<string>com.asmeurer.plisttest</string>
+	<string>com.asmeurer.plisttest2</string>
+	<key>LowPriorityIO</key>
+	<true/>
 	<key>ProgramArguments</key>
 	<array>
 		<string>plutil</string>
 		<string>-convert</string>
-		<string>xml1</string>
-		<string>/Users/aaronmeurer/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+		<string>binary1</string>
+		<string>{BINARY}</string>
 		<string>-o</string>
-		<string>/Users/aaronmeurer/Documents/dotfiles/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+		<string>{XML}</string>
 	</array>
+	<key>QueueDirectories</key>
+	<array/>
+	<key>ThrottleInterval</key>
+	<integer>{THROTTLEINTERVAL}</integer>
 	<key>WatchPaths</key>
 	<array>
-		<string>/Users/aaronmeurer/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist</string>
+		<string>{BINARY}</string>
 	</array>
 </dict>
 </plist>
