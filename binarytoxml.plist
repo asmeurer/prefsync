@@ -13,10 +13,10 @@
 		<string>convert</string>
 		<string>()</string>
 		<string>{</string>
-		<string>   XATTRS=${xattr</string>
-		<string>{BINARY}};</string>
-		<string>   PREFSYNC_ATTR="com.asmeurer.prefsync:NoSync";</string>
-		<string>   if</string>
+		<string>XATTRS=${xattr {BINARY}}</string>
+		<string>;</string>
+		<string>PREFSYNC_ATTR="com.asmeurer.prefsync:NoSync";</string>
+		<string>if</string>
 		<string>[</string>
 		<string>${XATTR/$PREFSYNC_ATTR}</string>
 		<string>=</string>
@@ -24,20 +24,19 @@
 		<string>]</string>
 		<string>;</string>
 		<string>then</string>
-		<string>       plutil</string>
+		<string>    plutil</string>
 		<string>-convert</string>
 		<string>xml1</string>
 		<string>{BINARY}</string>
 		<string>-o</string>
 		<string>{XML};</string>
-		<string>       xattr</string>
+		<string>    xattr</string>
 		<string>-w</string>
 		<string>com.asmeurer.prefsync:NoSync</string>
 		<string>yes</string>
 		<string>{XML};</string>
-		<string>   fi;</string>
-		<string>};</string>
-		<string>convert</string>
+		<string>fi;</string>
+		<string>};convert</string>
 	</array>
 	<key>QueueDirectories</key>
 	<array/>
