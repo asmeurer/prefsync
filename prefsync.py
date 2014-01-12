@@ -38,7 +38,7 @@ def main():
 
     binary = os.path.abspath(os.path.expanduser(args.preffile))
     xml = os.path.abspath(os.path.expanduser(args.destination))
-    throttleinterval = args.throttle_interval
+    throttleinterval = str(args.throttle_interval)
 
     with open("binarytoxml.plist") as f:
         binarytoxml = f.read()
@@ -56,13 +56,13 @@ def main():
 
     prefname = os.path.basename(binary).rpartition('.plist')[0]
 
-    # We only support OS X, so don't bother with os.path
-    with open("~/Library/LaunchAgents/" + '.'.join([reverse_DNS, prefname,
-        'binarytoxml']), 'w') as f:
+    # We only support OS X, so don't bother with os.path.join
+    with open(os.path.expanduser("~/Library/LaunchAgents/" + '.'.join([reverse_DNS, prefname,
+        'binarytoxml'])), 'w') as f:
         f.write(binarytoxml)
 
-    with open("~/Library/LaunchAgents/" + '.'.join([reverse_DNS, prefname,
-        'xmltobinary']), 'w') as f:
+    with open(os.path.expanduser("~/Library/LaunchAgents/" + '.'.join([reverse_DNS, prefname,
+        'xmltobinary'])), 'w') as f:
         f.write(xmltobinary)
 
 
