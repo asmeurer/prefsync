@@ -85,5 +85,7 @@ def main():
     return (subprocess.check_call(['launchctl', 'load', binarytoxml_agent]) or
     subprocess.check_call(['launchctl', 'load', xmltobinary_agent]))
 
+    print("Logout and log back in or restart for changes to take effect")
+
 if __name__ == '__main__':
     sys.exit(main())
