@@ -10,33 +10,18 @@
     <true/>
 	<key>ProgramArguments</key>
 	<array>
-		<string>convert</string>
-		<string>()</string>
+		<string>convert ()</string>
 		<string>{</string>
-		<string>XATTRS=${xattr {XML}}</string>
-		<string>;</string>
+		<string>XATTRS=$(xattr {XML});</string>
 		<string>PREFSYNC_ATTR="com.asmeurer.prefsync:NoSync";</string>
 		<string>if</string>
-		<string>[</string>
-		<string>${XATTR/$PREFSYNC_ATTR}</string>
-		<string>=</string>
-		<string>$XATTR</string>
-		<string>]</string>
-		<string>;</string>
+		<string>[ ${XATTR/$PREFSYNC_ATTR} = $XATTR ] ;</string>
 		<string>then</string>
-		<string>    plutil</string>
-		<string>-convert</string>
-		<string>binary1</string>
-		<string>{XML}</string>
-		<string>-o</string>
-		<string>{BINARY};</string>
-		<string>    xattr</string>
-		<string>-w</string>
-		<string>com.asmeurer.prefsync:NoSync</string>
-		<string>yes</string>
-		<string>{BINARY};</string>
+		<string>    plutil -convert binary1 {XML} -o {BINARY};</string>
+		<string>    xattr -w com.asmeurer.prefsync:NoSync yes {BINARY};</string>
 		<string>fi;</string>
-		<string>};convert</string>
+		<string>};</string>
+		<string>convert</string>
 	</array>
 	<key>QueueDirectories</key>
 	<array/>
