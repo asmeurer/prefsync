@@ -92,6 +92,9 @@ logging out and logging back in, or by restarting.  You can also try using
 The Lingon program is invaluable when working with launchd (the older, free
 version works just fine).
 
+StackOverflow and Mac OS X Hints helped me debug some of the strangeness
+when trying to get this to work.
+
 # License
 
 BSD (see the LICENSE file).
