@@ -26,7 +26,9 @@ __version__ = '1.0'
 reverse_DNS = 'com.asmeurer.prefsync'
 
 def main():
-    with open("README.md") as f:
+    curdir = os.path.split(__file__)[0]
+
+    with open(os.path.join(curdir, "README.md")) as f:
         help = f.read()
     parser = argparse.ArgumentParser(description=help,
         formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -60,7 +62,7 @@ def main():
     with open(xml, 'a'):
         pass
 
-    with open("binarytoxml.plist") as f:
+    with open(os.path.join(curdir, "binarytoxml.plist")) as f:
         binarytoxml = f.read()
 
     binarytoxml = binarytoxml.replace("{BINARY}", binary)
@@ -68,7 +70,7 @@ def main():
     binarytoxml = binarytoxml.replace("{THROTTLEINTERVAL}", throttleinterval)
     binarytoxml = binarytoxml.replace("{LABEL}", binarytoxml_label)
 
-    with open("xmltobinary.plist") as f:
+    with open(os.path.join(curdir, "xmltobinary.plist")) as f:
         xmltobinary = f.read()
 
     xmltobinary = xmltobinary.replace("{BINARY}", binary)
