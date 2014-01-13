@@ -33,10 +33,11 @@ which allows to convert binary plist files to xml plist files and xml plist
 files back to binary, and [launchd](http://en.wikipedia.org/wiki/Launchd),
 which provides a facility to automatically run a script when a file changes.
 
-There is only one catch, which is that if you just do this, it will run
-cyclically forever, because as soon as the binary file is updated, it will
-write to the xml version, which will register as a change, causing it to write
-the binary plist, and so on.
+There are some catches, though.
+
+First, if you just do this, it will run cyclically forever, because as soon as
+the binary file is updated, it will write to the xml version, which will
+register as a change, causing it to write the binary plist, and so on.
 
 We get around this by writing a special extended attribute to each file when
 it is written, and ignoring files if they have that attribute (so that only
@@ -49,6 +50,34 @@ if your program does by running
 then, make a change to the preferences, and see if the atttribute is still there
 
     xattr ~/Library/Preferences/preferencefile.plist
+
+Second, in Mac OS X 10.9, preferences are cached, meaning that even if a
+program is closed and the plist file is written to, it will be overridden with
+the original preferences when it is opened again if the cache was not
+flushed.
+
+Getting around this is easy: we just call
+
+    defaults read com.reversedns.preference
+
+(where `com.reversedns.preference` is the reverse DNS for the preference file
+in question). This flushes the cache.
+
+Finally, it generally doesn't work to update the binary preference file while
+a program is running.  You may be able to just close and reopen the program,
+but it may write to the preferences when you do that, overwriting the
+changes.
+
+Therefore, it is *highly* recommended to track the XML changes in git, so that
+if they are overwritten they can be easily recovered.  To force the changes to
+be written to the binary, the easiest way is to close the program, make sure
+the xml changes are the same (i.e., closing the program didn't cause the
+preferences to be written and synced over to the xml), and then touch the xml
+file.
+
+Note that the synchronization in each direction may take up to 10 seconds by
+default to take place. You can change this by setting the `-t` flag when
+running `prefsync.py`.
 
 # Gotchas
 
