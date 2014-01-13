@@ -86,10 +86,12 @@ def main():
     with open(xmltobinary_agent, 'w') as f:
         f.write(xmltobinary)
 
-    return (subprocess.check_call(['launchctl', 'load', binarytoxml_agent]) or
+    ret = (subprocess.check_call(['launchctl', 'load', binarytoxml_agent]) or
     subprocess.check_call(['launchctl', 'load', xmltobinary_agent]))
 
     print("Logout and log back in or restart for changes to take effect")
+
+    return ret
 
 if __name__ == '__main__':
     sys.exit(main())
