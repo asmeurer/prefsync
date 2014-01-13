@@ -59,8 +59,7 @@ def main():
     xmltobinary_label = '.'.join([reverse_DNS, prefname, 'xmltobinary', 'plist'])
 
     # Make sure the xml file exists, since launchd won't work if it doesn't
-    with open(xml, 'a'):
-        pass
+    subprocess.check_call(['plutil', '-convert', 'xml1', binary, '-o', xml])
 
     with open(os.path.join(curdir, "binarytoxml.plist")) as f:
         binarytoxml = f.read()
