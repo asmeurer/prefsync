@@ -10,7 +10,7 @@
 	<array>
 		<string>/bin/bash</string>
 		<string>-c</string>
-		<string>convert () { XATTRS=$(xattr {BINARY}); PREFSYNC_ATTR="com.asmeurer.prefsync:NoSync"; if [ ${XATTR/$PREFSYNC_ATTR} = $XATTR ] ; then     plutil -convert xml1 {BINARY} -o {XML};     xattr -w com.asmeurer.prefsync:NoSync yes {XML}; fi; }; convert</string>
+		<string>convert () { XATTRS=$(xattr {BINARY}); PREFSYNC_ATTR="com.asmeurer.prefsync:NoSync"; if [ ${XATTRS/$PREFSYNC_ATTR} = $XATTRS ] ; then     plutil -convert xml1 {BINARY} -o {XML};     xattr -w com.asmeurer.prefsync:NoSync yes {XML}; fi; }; convert</string>
 	</array>
 	<key>QueueDirectories</key>
 	<array/>
