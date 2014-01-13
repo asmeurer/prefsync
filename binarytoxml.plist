@@ -6,22 +6,13 @@
 	<string>{LABEL}</string>
 	<key>LowPriorityIO</key>
 	<true/>
-    <key>Debug</key>
-    <true/>
+	<key>Debug</key>
+	<true/>
 	<key>ProgramArguments</key>
 	<array>
-		<string>convert ()</string>
-		<string>{</string>
-		<string>XATTRS=$(xattr {BINARY});</string>
-		<string>PREFSYNC_ATTR="com.asmeurer.prefsync:NoSync";</string>
-		<string>if</string>
-		<string>[ ${XATTR/$PREFSYNC_ATTR} = $XATTR ] ;</string>
-		<string>then</string>
-		<string>    plutil -convert xml1 {BINARY} -o {XML};</string>
-		<string>    xattr -w com.asmeurer.prefsync:NoSync yes {XML};</string>
-		<string>fi;</string>
-		<string>};</string>
-		<string>convert</string>
+		<string>/bin/bash</string>
+		<string>-c</string>
+		<string>convert () { XATTRS=$(xattr {BINARY}); PREFSYNC_ATTR="com.asmeurer.prefsync:NoSync"; if [ ${XATTR/$PREFSYNC_ATTR} = $XATTR ] ; then     plutil -convert xml1 {BINARY} -o {XML};     xattr -w com.asmeurer.prefsync:NoSync yes {XML}; fi; }; convert</string>
 	</array>
 	<key>QueueDirectories</key>
 	<array/>
