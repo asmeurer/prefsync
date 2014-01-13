@@ -75,6 +75,7 @@ def main():
     xmltobinary = xmltobinary.replace("{XML}", xml)
     xmltobinary = xmltobinary.replace("{THROTTLEINTERVAL}", throttleinterval)
     xmltobinary = xmltobinary.replace("{LABEL}", xmltobinary_label)
+    xmltobinary = xmltobinary.replace("{PREFNAME}", prefname)
 
     binarytoxml_agent = os.path.expanduser("~/Library/LaunchAgents/" + binarytoxml_label)
     xmltobinary_agent = os.path.expanduser("~/Library/LaunchAgents/" + xmltobinary_label)
