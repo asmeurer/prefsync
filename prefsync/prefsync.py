@@ -28,7 +28,7 @@ reverse_DNS = 'com.asmeurer.prefsync'
 def main():
     curdir = os.path.split(__file__)[0]
 
-    with open(os.path.join(curdir, "README.md")) as f:
+    with open(os.path.join(curdir, "README")) as f:
         help = f.read()
     parser = argparse.ArgumentParser(description=help,
         formatter_class=argparse.RawDescriptionHelpFormatter)

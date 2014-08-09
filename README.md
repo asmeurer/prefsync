@@ -24,6 +24,26 @@ The good news is that it's actually possible to use binary plist files, and
 automatically convert them back and forth to human-readable (and git
 trackable) XML, using some tools that come with Mac OS X.
 
+# Installing
+
+You can install it with conda using
+
+    conda install -c asmeurer prefsync
+
+Or using pip
+
+    pip install prefsync
+
+Or from the git source
+
+    python setup.py install
+
+Or you can just run it from the checkout, with
+
+    python -m prefsync
+
+Once you install it, use the command `prefsync`.
+
 # How it works
 
 It's actually quite simple. The heavy work is done for us by the operating
@@ -77,7 +97,7 @@ file.
 
 Note that the synchronization in each direction may take up to 10 seconds by
 default to take place. You can change this by setting the `-t` flag when
-running `prefsync.py`.
+running `prefsync`.
 
 # Gotchas
 
