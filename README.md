@@ -107,6 +107,13 @@ launchd will stop watching a path if it ceases to exist.  You can reset the
 process by logging out and logging back in, or by restarting.  You can also
 try using `launchctl`, though this may not work reliably.
 
+# TODO
+
+There is currently no easy way to remove a sync. The best way is to open
+Lingon and delete the syncs for the preferences you no longer want to sync. Be
+sure to delete both `binarytoxml` and `xmltobinary`. You will need to log out
+and log back in or restart for changes to take effect.
+
 # Acknowledgments
 
 The Lingon program is invaluable when working with launchd (the older, free
