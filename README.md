@@ -102,10 +102,10 @@ running `prefsync`.
 # Gotchas
 
 According to
-[this page](http://managingosx.wordpress.com/2006/05/10/launchd-gotcha/) will
-stop watching a path if it ceases to exist.  You can reset the process by
-logging out and logging back in, or by restarting.  You can also try using
-`launchctl`, though this may not work reliably.
+[this page](http://managingosx.wordpress.com/2006/05/10/launchd-gotcha/)
+launchd will stop watching a path if it ceases to exist.  You can reset the
+process by logging out and logging back in, or by restarting.  You can also
+try using `launchctl`, though this may not work reliably.
 
 # Acknowledgments
 
