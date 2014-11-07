@@ -24,6 +24,17 @@ The good news is that it's actually possible to use binary plist files, and
 automatically convert them back and forth to human-readable (and git
 trackable) XML, using some tools that come with Mac OS X.
 
+# Usage
+
+    usage: prefsync [-h] [-t THROTTLE_INTERVAL] PREFFILE DEST
+
+For example
+
+    prefsync ~/Library/Preferences/preferencefile.plist preferencefile.xml
+
+The `-t` flag sets the throttle interval for syncing the file, in seconds. The
+default is 10 seconds.
+
 # Installing
 
 You can install it with conda using
