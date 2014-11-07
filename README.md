@@ -135,4 +135,4 @@ when trying to get this to work.
 
 # License
 
-BSD (see the LICENSE file).
+MIT (see the LICENSE file).
