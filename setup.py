@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='prefsync',
-    version='1.0',
+    version='1.1',
     description='''A little tool to help synchronize Mac OS X plist files
     (used for preferences for most Mac Apps) seamlessly, in a way that can
     be tracked by git.''',

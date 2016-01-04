@@ -21,8 +21,6 @@ else:
     import shlex
     quote = shlex.quote
 
-__version__ = '1.0'
-
 reverse_DNS = 'com.asmeurer.prefsync'
 
 def main():
