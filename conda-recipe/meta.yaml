@@ -1,11 +1,11 @@
 package:
   name: prefsync
-  version: "1.1"
+  version: "1.2"
 
 source:
-  fn: prefsync-1.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/prefsync/prefsync-1.1.tar.gz
-  md5: 541e04e8ffedff46dae945377b5fe6ec
+  fn: prefsync-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/prefsync/prefsync-1.2.tar.gz
+  md5: 1a422a7c8d5a81b319592afab3ff4f52
 #  patches:
    # List any patch files here
    # - fix.patch
