@@ -56,6 +56,13 @@ def main():
     binarytoxml_label = '.'.join([reverse_DNS, prefname, 'binarytoxml', 'plist'])
     xmltobinary_label = '.'.join([reverse_DNS, prefname, 'xmltobinary', 'plist'])
 
+    binarytoxml_agent = os.path.expanduser("~/Library/LaunchAgents/" + binarytoxml_label)
+    xmltobinary_agent = os.path.expanduser("~/Library/LaunchAgents/" + xmltobinary_label)
+
+    if os.path.exists(binarytoxml_agent) or os.path.exists(xmltobinary_agent):
+        print("Error: An agent for %s.%s already seems to exist, exiting." % (reverse_DNS, prefname))
+        sys.exit()
+
     # Make sure the xml file exists, since launchd won't work if it doesn't
     subprocess.check_call(['plutil', '-convert', 'xml1', binary, '-o', xml])
 
@@ -75,9 +82,6 @@ def main():
     xmltobinary = xmltobinary.replace("{THROTTLEINTERVAL}", throttleinterval)
     xmltobinary = xmltobinary.replace("{LABEL}", xmltobinary_label)
     xmltobinary = xmltobinary.replace("{PREFNAME}", prefname)
-
-    binarytoxml_agent = os.path.expanduser("~/Library/LaunchAgents/" + binarytoxml_label)
-    xmltobinary_agent = os.path.expanduser("~/Library/LaunchAgents/" + xmltobinary_label)
 
         # We only support OS X, so don't bother with os.path.join
     with open(binarytoxml_agent, 'w') as f:
