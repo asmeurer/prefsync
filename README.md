@@ -39,7 +39,7 @@ default is 10 seconds.
 
 You can install it with conda using
 
-    conda install -c asmeurer prefsync
+    conda install -c conda-forge prefsync
 
 Or using pip
 
